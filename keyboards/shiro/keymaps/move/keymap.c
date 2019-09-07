@@ -16,7 +16,8 @@
 #include QMK_KEYBOARD_H
 
 enum layer_number {
-  _NUMBER = 0
+  _LAY1 = 0,
+  _LAY2
 };
 
 #define NUMBER TO(_NUMBER)
@@ -24,11 +25,19 @@ enum layer_number {
 // _______
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_NUMBER] = LAYOUT( 
-    KC_HOME, XXXXXXX, KC_LCTRL,
-    KC_END, XXXXXXX, KC_LALT,
-    KC_LEFT, KC_PGUP, KC_F4,
-    KC_DOWN, KC_UP, XXXXXXX,
-    KC_RIGHT, KC_PGDOWN, XXXXXXX
+  [_LAY1] = LAYOUT( 
+    MO(_LAY2), KC_HOME, KC_1,
+    XXXXXXX, KC_END, KC_2,
+    KC_LEFT, KC_PGUP, KC_3,
+    KC_DOWN, KC_UP, KC_4,
+    KC_RIGHT, KC_PGDOWN, KC_5
   ),
+  [_LAY2] = LAYOUT( 
+    XXXXXXX, XXXXXXX, KC_6,
+    XXXXXXX, XXXXXXX, KC_7,
+    KC_LEFT, KC_PGUP, KC_8,
+    KC_DOWN, KC_UP, KC_9,
+    KC_RIGHT, KC_PGDOWN, KC_0
+  ),
+
 };
