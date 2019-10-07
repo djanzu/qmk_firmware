@@ -20,6 +20,10 @@
 extern rgblight_config_t rgblight_config;
 #endif
 
+enum custom_keycodes {
+  EMACS_SAVE = SAFE_RANGE,
+};
+
 enum layers {
     DEFAULT,
     RAISE,
@@ -29,8 +33,8 @@ enum layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [DEFAULT] = LAYOUT(
-        KC_LCTRL, KC_HOME, KC_PGUP,
-        KC_LSFT, KC_END, KC_PGDN
+        EMACS_SAVE, KC_HOME, KC_PGUP,
+        KC_LCTRL, KC_END, KC_PGDN
     ),
     [RAISE] = LAYOUT(
         _______, KC_PGUP, MO(ADJUST),
@@ -45,3 +49,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         RGB_MODE_SNAKE, RGB_MODE_PLAIN, RGB_HUI
     )
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case EMACS_SAVE:
+      if (record->event.pressed) {
+        // when keycode QMKBEST is pressed
+        SEND_STRING(SS_LCTRL("x")SS_LCTRL("s")SS_LCTRL("x")SS_LCTRL("c"));
+      } else {
+        // when keycode QMKBEST is released
+      }
+      break;
+  }
+  return true;
+}
