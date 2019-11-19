@@ -18,6 +18,10 @@
 enum custom_keycodes {
   LOGIN = SAFE_RANGE,
 };
+enum layer_names {
+	_L1,
+	_L2,
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), KC_UP, KC_DEL, KC_BSPC, 
@@ -26,9 +30,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // KC_LCTRL, KC_HOME, KC_PGUP,   KC_INS, KC_NO,    LOGIN, 
     // KC_LSFT,  KC_END,  KC_PGDOWN, KC_DEL, KC_LANG5, KC_ESC	
 
-  [0] = LAYOUT(
-    KC_LCTRL, KC_HOME, KC_PGUP, KC_UP, KC_PGDOWN, KC_BSPC, \
-    KC_LSFT, KC_END, KC_LEFT, KC_DOWN, KC_RIGHT, KC_ENT
+  [_L1] = LAYOUT(
+    LT(_L2, KC_HOME), KC_END, KC_PGUP, KC_UP, KC_PGDOWN, KC_BSPC, \
+    KC_MHEN, KC_HENK, KC_LEFT, KC_DOWN, KC_RIGHT, KC_ENT
+  ),
+  [_L2] = LAYOUT(
+    _______, _______, _______, _______, _______, _______, \
+    KC_AT, KC_RO, _______, _______, _______, _______
   ),
 };
 
