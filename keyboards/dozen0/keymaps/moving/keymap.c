@@ -32,7 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_L1] = LAYOUT(
     LT(_L2, KC_HOME), KC_END, KC_PGUP, KC_UP, KC_PGDOWN, KC_BSPC, \
-    KC_MHEN, KC_HENK, KC_LEFT, KC_DOWN, KC_RIGHT, KC_ENT
+    SFT_T(KC_MHEN), CTL_T(KC_HENK), KC_LEFT, KC_DOWN, KC_RIGHT, KC_ENT
   ),
   [_L2] = LAYOUT(
     _______, _______, _______, _______, _______, _______, \
