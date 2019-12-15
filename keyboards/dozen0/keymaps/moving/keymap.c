@@ -30,13 +30,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // KC_LCTRL, KC_HOME, KC_PGUP,   KC_INS, KC_NO,    LOGIN, 
     // KC_LSFT,  KC_END,  KC_PGDOWN, KC_DEL, KC_LANG5, KC_ESC	
 
+    // SFT_T(KC_MHEN), CTL_T(KC_HENK)
+
   [_L1] = LAYOUT(
     LT(_L2, KC_HOME), KC_END, KC_PGUP, KC_UP, KC_PGDOWN, KC_BSPC, \
-    SFT_T(KC_MHEN), CTL_T(KC_HENK), KC_LEFT, KC_DOWN, KC_RIGHT, KC_ENT
+    KC_LSFT, MO(_L2), KC_LEFT, KC_DOWN, KC_RIGHT, KC_ENT
   ),
   [_L2] = LAYOUT(
-    _______, _______, _______, _______, _______, _______, \
-    KC_AT, KC_RO, _______, _______, _______, _______
+    _______, _______, _______, LGUI(KC_X), LGUI(KC_C), LGUI(KC_V), \
+    _______, _______, _______, _______, _______, LOGIN
   ),
 };
 
@@ -45,7 +47,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case LOGIN:
       if (record->event.pressed) {
         // when keycode QMKBEST is pressed
-        SEND_STRING("********\n");
+        SEND_STRING("--------\n");
       } else {
         // when keycode QMKBEST is released
       }
