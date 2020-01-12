@@ -18,8 +18,8 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT(
-    KC_BSPC, KC_ENT, KC_S, KC_D, KC_F, KC_NO, \
-    KC_LSFT, KC_Z, KC_X, KC_NO, KC_C, KC_V\
+    KC_LCTL, KC_NO, KC_NO, KC_S, KC_D, KC_F, \
+    KC_LSFT, KC_NO, KC_Z, KC_X, KC_C, KC_V\
   ),
 };
 
