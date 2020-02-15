@@ -17,12 +17,14 @@
 
 #include "board.h"
 
-extern keymap_config_t keymap_config;
-
 enum layer_number { _QWERTY = 0, _COLEMAK, _DVORAK, _LOWER, _RAISE, _ADJUST };
 
 // Defines the keycodes used by our macros in process_record_user
-enum custom_keycodes { QWERTY = SAFE_RANGE, COLEMAK, DVORAK, LOWER, RAISE, ADJUST };
+enum custom_keycodes { QWERTY = SAFE_RANGE, COLEMAK, DVORAK };
+
+#define LOWER  MO(_LOWER)
+#define RAISE  MO(_RAISE)
+#define ADJUST MO(_ADJUST)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -37,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |ADJUST| Esc  | Alt  | GUI  |LOWER |Space |             | Space| RAISE| Left | Down |  Up  | Right|             |      0      |   .  |      |   -  | Bksp |
    * `-----------------------------------------'             `-----------------------------------------'             `-----------------------------------------'
    */
-    [_QWERTY] = LAYOUT3(
+    [_QWERTY] = LAYOUT_extended(
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,              KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,         KC_P7,   KC_P8,   KC_P9,  KC_PPLS, KC_NLCK, KC_ESC,
       KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,              KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,         KC_P4,   KC_P5,   KC_P6,  _______, KC_PSLS, KC_TAB,
       KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,              KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,         KC_P1,   KC_P2,   KC_P3,  KC_PENT, KC_PAST, KC_PEQL,
@@ -54,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |ADJUST| Esc  | Alt  | GUI  |LOWER |Space |             | Space| RAISE| Left | Down |  Up  | Right|             |      0      |   .  |      |   -  | Bksp |
    * `-----------------------------------------'             `-----------------------------------------'             `-----------------------------------------'
    */
-    [_COLEMAK] = LAYOUT3(
+    [_COLEMAK] = LAYOUT_extended(
       KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,              KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,       KC_P7,   KC_P8,   KC_P9,  KC_PPLS, KC_NLCK, KC_ESC,
       KC_LCTL, KC_A,    KC_R,    KC_S,    KC_T,    KC_D,              KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,       KC_P4,   KC_P5,   KC_P6,  _______, KC_PSLS, KC_TAB,
       KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,              KC_K,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT ,       KC_P1,   KC_P2,   KC_P3,  KC_PENT, KC_PAST, KC_PEQL,
@@ -72,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |ADJUST| Esc  | Alt  | GUI  |LOWER |Space |             | Space| RAISE| Left | Down |  Up  | Right|             |      0      |   .  |      |   -  | Bksp |
    * `-----------------------------------------'             `-----------------------------------------'             `-----------------------------------------'
    */
-    [_DVORAK] = LAYOUT3(
+    [_DVORAK] = LAYOUT_extended(
       KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,              KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_DEL,        KC_P7,   KC_P8,   KC_P9,  KC_PPLS, KC_NLCK, KC_ESC,
       KC_LCTL, KC_A,    KC_O,    KC_E,    KC_U,    KC_I,              KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH,       KC_P4,   KC_P5,   KC_P6,  _______, KC_PSLS, KC_TAB,
       KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,              KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT ,       KC_P1,   KC_P2,   KC_P3,  KC_PENT, KC_PAST, KC_PEQL,
@@ -90,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |      |      |      |      |      |      |             |      |      | Next | Vol- | Vol+ | Play |             |      0      |   .  |      |   -  | Bksp |
    * `-----------------------------------------'             `-----------------------------------------'             `-----------------------------------------'
    */
-    [_LOWER] = LAYOUT3(
+    [_LOWER] = LAYOUT_extended(
       KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,           KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______,       KC_P7,   KC_P8,   KC_P9,  KC_PPLS, KC_NLCK, KC_ESC,
       _______, _______, _______, _______, _______, _______,           KC_MINS, KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,       KC_P4,   KC_P5,   KC_P6,  _______, KC_PSLS, KC_TAB,
       _______, _______, _______, _______, _______, _______,           _______, _______, _______, KC_HOME, KC_END,  _______,       KC_P1,   KC_P2,   KC_P3,  KC_PENT, KC_PAST, KC_PEQL,
@@ -108,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |      |      |      |      |      |      |             |      |      | Next | Vol- | Vol+ | Play |             |      0      |   .  |      |   -  | Bksp |
    * `-----------------------------------------'             `-----------------------------------------'             `-----------------------------------------'
    */
-    [_RAISE] = LAYOUT3(
+    [_RAISE] = LAYOUT_extended(
       KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,              KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,        KC_P7,   KC_P8,   KC_P9,  KC_PPLS, KC_NLCK, KC_ESC,
       _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,             KC_F6,   KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,       KC_P4,   KC_P5,   KC_P6,  _______, KC_PSLS, KC_TAB,
       _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,            KC_F12,  _______, _______, _______, _______, _______,       KC_P1,   KC_P2,   KC_P3,  KC_PENT, KC_PAST, KC_PEQL,
@@ -126,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |      |      |      |      |      |      |             |      |      | Home |PageDn|PageUp| End  |             |      0      |   .  |      |   -  | Bksp |
    * `-----------------------------------------'             `-----------------------------------------'             `-----------------------------------------'
    */
-    [_ADJUST] = LAYOUT3(
+    [_ADJUST] = LAYOUT_extended(
       _______, RESET,   _______, _______, _______, _______,           _______, QWERTY,  COLEMAK, DVORAK,  _______, KC_INS,        KC_P7,   KC_P8,   KC_P9,  KC_PPLS, KC_NLCK, KC_ESC,
       KC_CAPS, _______, _______, _______, _______, AG_NORM,           AG_SWAP, KC_MINS, KC_EQL,  KC_PSCR, KC_SLCK, KC_PAUS,       KC_P4,   KC_P5,   KC_P6,  _______, KC_PSLS, KC_TAB,
       _______, _______, _______, _______, _______, _______,           _______, _______, _______, _______, _______, _______,       KC_P1,   KC_P2,   KC_P3,  KC_PENT, KC_PAST, KC_PEQL,
@@ -134,6 +136,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 // clang-format on
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -152,55 +158,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 set_single_persistent_default_layer(_DVORAK);
             }
             return false;
-        case LOWER:
-            if (record->event.pressed) {
-                layer_on(_LOWER);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            } else {
-                layer_off(_LOWER);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            }
-            return false;
-        case RAISE:
-            if (record->event.pressed) {
-                layer_on(_RAISE);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            } else {
-                layer_off(_RAISE);
-                update_tri_layer(_LOWER, _RAISE, _ADJUST);
-            }
-            return false;
-        case ADJUST:
-            if (record->event.pressed) {
-                layer_on(_ADJUST);
-            } else {
-                layer_off(_ADJUST);
-            }
-            return false;
     }
     return true;
 }
 
-/*
-void matrix_init_user(void) {}
+bool led_update_user(led_t led_state) {
+    board_set_led_by_index(0, LED_YELLOW, led_state.caps_lock);
+    board_set_led_by_index(1, LED_YELLOW, led_state.scroll_lock);
+    board_set_led_by_index(2, LED_YELLOW, led_state.num_lock);
 
-void matrix_scan_user(void) {}
-*/
-
-void led_set_user(uint8_t usb_led) {
-    if (IS_LED_ON(usb_led, USB_LED_CAPS_LOCK)) {
-        board_set_led_by_index(0, LED_YELLOW, true);
-    } else {
-        board_set_led_by_index(0, LED_YELLOW, false);
-    }
-    if (IS_LED_ON(usb_led, USB_LED_SCROLL_LOCK)) {
-        board_set_led_by_index(1, LED_YELLOW, true);
-    } else {
-        board_set_led_by_index(1, LED_YELLOW, false);
-    }
-    if (IS_LED_ON(usb_led, USB_LED_NUM_LOCK)) {
-        board_set_led_by_index(2, LED_YELLOW, true);
-    } else {
-        board_set_led_by_index(2, LED_YELLOW, false);
-    }
+    return false;
 }
