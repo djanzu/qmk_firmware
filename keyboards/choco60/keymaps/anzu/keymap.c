@@ -29,13 +29,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRACKET, KC_RBRACKET, KC_BSLASH, 
     KC_LCTRL, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCOLON, KC_QUOTE, KC_ENTER,
     KC_LSHIFT,KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMMA, KC_DOT, KC_SLASH, KC_RSHIFT, KC_FN,
-    KC_LALT,  KC_LGUI, LT(_FN, KC_SPACE), LT(_FN, KC_SPACE), LT(_FN, KC_SPACE), KC_RGUI, KC_RALT
+    KC_LGUI,  KC_LALT, LT(_FN, KC_SPACE), KC_LGUI, LT(_FN, KC_SPACE), KC_RALT, KC_RGUI
   ),
   [_FN] = LAYOUT(
-    _______, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12, KC_INSERT, KC_DELETE,
-    _______, _______, _______, _______, _______, _______, _______, _______, KC_PSCREEN, KC_SCROLLLOCK, KC_PAUSE, KC_UP, KC_RBRACKET, KC_BSPACE,
-    _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME, KC_PGUP, KC_LEFT, KC_RIGHT, KC_ENTER,
-    _______, _______, _______, _______, _______, _______, KC_HOME, KC_END, KC_PGUP, KC_PGDOWN, KC_DOWN, KC_RSHIFT, KC_FN,
-    _______, _______, _______, _______, _______, KC_STOP, RESET
+    _______, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5,      KC_F6,     KC_F7,   KC_F8,   KC_F9,      KC_F10,        KC_F11, KC_F12, KC_INSERT, KC_DELETE,
+    _______, _______, _______, _______, _______,     _______,   _______, _______, KC_PSCREEN, KC_SCROLLLOCK, KC_PAUSE, _______, KC_RBRACKET, KC_BSPACE,
+    _______, _______, _______, _______, _______,     KC_PGUP,   KC_HOME, _______, KC_UP,      KC_PGUP,       _______,   KC_ENTER,
+    _______, _______, _______, _______, _______,     KC_PGDOWN, KC_END,  KC_LEFT, KC_DOWN,    KC_LEFT,       KC_RSHIFT, KC_FN,
+    _______, _______, _______,                       _______,   _______, KC_STOP, RESET
   )
 };
