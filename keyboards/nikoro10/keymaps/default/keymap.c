@@ -30,7 +30,7 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
     [_BASE] = LAYOUT(
-        RGB_HUI,RGB_HUD
+        RGB_HUI,RGB_HUD,KC_A
     )
     // [_FN] = LAYOUT(
     //     QMKBEST, QMKURL,
