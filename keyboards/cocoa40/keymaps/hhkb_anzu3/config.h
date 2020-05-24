@@ -23,4 +23,7 @@
   #define RGBLIGHT_TIMER
 
   #define RGBLED_NUM 6
+  #define RGBLIGHT_ANIMATIONS
+  #define DISABLE_RGB_MATRIX_CYCLE_ALL
+
 #endif
