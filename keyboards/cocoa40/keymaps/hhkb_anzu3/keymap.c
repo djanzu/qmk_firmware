@@ -42,9 +42,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, MO(_RGB), _______, _______, _______
   ),
   [_FN] = LAYOUT(
-    KC_ESC, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_UP, KC_F12, KC_DELETE,
-    _______, KC_F11, _______, _______, _______,  _______, KC_PGUP, _______, _______, _______, KC_LEFT, KC_RIGHT, _______,
-    _______, _______, _______, _______, _______, _______, KC_PGDOWN, _______, _______, _______, KC_DOWN, _______,  _______, 
+    KC_ESC,  KC_F1, KC_F2,  KC_F3,  KC_F4,  _______, _______, _______, _______, _______,   _______, KC_UP, _______, KC_DELETE,
+    _______, KC_F5, KC_F6,  KC_F7,  KC_F8,  _______, _______, _______, KC_HOME, KC_PGUP,   KC_LEFT, KC_RIGHT, _______,
+    _______, KC_F9, KC_F10, KC_F11, KC_F12, _______, _______, _______, KC_END,  KC_PGDOWN, KC_DOWN, _______,  _______, 
     _______, _______, _______, _______, _______, _______
   ),
   [_RGB] = LAYOUT(
