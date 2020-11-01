@@ -33,3 +33,6 @@ FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 HD44780_ENABLE = no 		# Enable support for HD44780 based LCDs
 
 LAYOUTS = ortho_6x4
+
+VIA_ENABLE = yes
+LTO_ENABLE = yes
