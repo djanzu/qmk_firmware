@@ -15,6 +15,8 @@
  */
 #include QMK_KEYBOARD_H
 
+// make kbdfans/kbdpad_mk2:anzu
+// atmega32u2 at QMK Toolbox
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ortho_6x4( /* Base */
