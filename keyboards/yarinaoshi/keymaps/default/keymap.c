@@ -27,21 +27,17 @@ enum custom_keycodes {
     QMKURL
 };
 
-//c
-//gh
-//ijk
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Base */
-    // [_BASE] = LAYOUT( 
-    //     KC_A, KC_B, KC_C, KC_D,
-    //     KC_E, KC_F, KC_G, KC_H,
-    //     KC_I, KC_J, KC_K, KC_L,
-    // )
     [_BASE] = LAYOUT( 
-        RGB_TOG, KC_NO, KC_NO, KC_NO,
-        KC_NO, KC_NO, RGB_VAI, RGB_VAD, 
-        RGB_SAI, RGB_SAD, RGB_HUI, RGB_HUD, 
+        MO(_FN), KC_NO, KC_VOLD, KC_VOLU,
+        KC_PGUP, KC_HOME, KC_UP, KC_END,
+        KC_PGDOWN, KC_LEFT, KC_DOWN, KC_RIGHT,
+    ),
+    [_FN] = LAYOUT( 
+        KC_TRNS, RGB_TOG, KC_VOLD, KC_VOLU,
+        RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, 
+        KC_TRNS, KC_TRNS, RGB_HUI, RGB_HUD, 
     )
 
 };
