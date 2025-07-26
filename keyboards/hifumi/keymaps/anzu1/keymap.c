@@ -20,8 +20,9 @@
 extern rgblight_config_t rgblight_config;
 #endif
 
-static uint16_t last_sent = 0;
 #define INTERVAL 15000  // 5秒ごと
+bool auto_send_enabled = false;
+static uint16_t last_sent = 0;
 
 
 enum layers {
@@ -31,10 +32,15 @@ enum layers {
     ADJUST
 };
 
+enum custom_keycodes {
+    TOGGLE_AUTOSEND = SAFE_RANGE,
+    // 他のカスタムキーコードがあればここに続ける
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [DEFAULT] = LAYOUT(
-        LT(RAISE, KC_F5), KC_UP,   LT(LOWER, KC_PSCR),
-        KC_LEFT,          KC_DOWN, KC_RIGHT
+        KC_ESC,  KC_UP,   TOGGLE_AUTOSEND,
+        KC_LEFT, KC_DOWN, KC_RIGHT
     ),
     [RAISE] = LAYOUT(
         _______, KC_PGUP, MO(ADJUST),
@@ -52,8 +58,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 void matrix_scan_user(void) {
-    if (timer_elapsed(last_sent) > INTERVAL) {
-        tap_code(KC_LCTL);
+    if (auto_send_enabled && timer_elapsed(last_sent) > INTERVAL) {
+        tap_code(KC_LCTL);  // 送信キー
         last_sent = timer_read();
     }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case TOGGLE_AUTOSEND:
+            if (record->event.pressed) {
+                auto_send_enabled = !auto_send_enabled;
+            }
+            return false;
+    }
+    return true;
 }
