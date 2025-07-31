@@ -14,6 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
+#include "xxx.h"    // xxx.hはgit管理対象外とする
 
 #ifdef RGBLIGHT_ENABLE
 //Following line allows macro to read current RGB settings
@@ -21,6 +22,12 @@ extern rgblight_config_t rgblight_config;
 #endif
 
 #define INTERVAL 15000  // 5秒ごと
+
+#ifndef PSS
+#define PSS "some string"
+#endif
+
+
 bool auto_send_enabled = false;
 static uint16_t last_sent = 0;
 
@@ -34,13 +41,14 @@ enum layers {
 
 enum custom_keycodes {
     TOGGLE_AUTOSEND = SAFE_RANGE,
+    SENDP,
     // 他のカスタムキーコードがあればここに続ける
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [DEFAULT] = LAYOUT(
         KC_ESC,  KC_UP,   TOGGLE_AUTOSEND,
-        KC_LEFT, KC_DOWN, KC_RIGHT
+        KC_LEFT, KC_DOWN, SENDP
     ),
     [RAISE] = LAYOUT(
         _______, KC_PGUP, MO(ADJUST),
@@ -71,6 +79,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 auto_send_enabled = !auto_send_enabled;
             }
             return false;
+        case SENDP:
+            if (record->event.pressed) {
+                SEND_STRING(PSS);   // このPSSの値は xxx.h で定義しておく。
+            }
+            return false; // 元のキー入力は無効にする
     }
     return true;
 }
