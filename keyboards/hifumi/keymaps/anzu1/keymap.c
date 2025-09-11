@@ -21,7 +21,7 @@
 extern rgblight_config_t rgblight_config;
 #endif
 
-#define INTERVAL 15000  // 5秒ごと
+#define INTERVAL 60000  // 60秒ごと
 
 #ifndef PSS
 #define PSS "some string"
@@ -67,7 +67,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 void matrix_scan_user(void) {
     if (auto_send_enabled && timer_elapsed(last_sent) > INTERVAL) {
-        tap_code(KC_LCTL);  // 送信キー
+        // tap_code(KC_LCTL);  // 送信キー
+        tap_code(KC_F13);  // 送信キー
         last_sent = timer_read();
     }
 }
